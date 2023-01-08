@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* Overall goal:
- * We want to be able 
- * 
- * 
- */
-
 public class Platform : MonoBehaviour
 {
 
@@ -17,6 +11,8 @@ public class Platform : MonoBehaviour
     public Vector2 automaticMoveDirection;
 
     public string moveMethod;
+
+    public float threshold;
 
     public float speed = 0.1f;
 
@@ -28,13 +24,17 @@ public class Platform : MonoBehaviour
         automaticMoveDirection = Vector2.right;
 
         //If playermove() is called...
+
+        threshold = 9.38f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (platformCollider.IsTouching(Border.Instance.rightBorder) | platformCollider.IsTouching(Border.Instance.leftBorder))
             automaticMoveDirection *= -1;
+        */
 
         AutomaticMove();
         //PlayerMove();
@@ -51,6 +51,11 @@ public class Platform : MonoBehaviour
     public void AutomaticMove()
     {
         transform.Translate(automaticMoveDirection*speed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        automaticMoveDirection *= -1;
     }
 
 }

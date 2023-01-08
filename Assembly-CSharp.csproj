@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{735198DD-08BD-1D73-B651-088957A30DCA}</ProjectGuid>
+    <ProjectGuid>{B4EF2875-F8E5-DB1C-E881-0BD7EB76D9C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Platform.cs" />
     <Compile Include="Assets/Scripts/Border.cs" />
+    <Compile Include="Assets/Scripts/SpawnPoint.cs" />
+    <Compile Include="Assets/Scripts/PlatformSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

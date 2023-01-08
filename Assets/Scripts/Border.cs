@@ -12,6 +12,9 @@ public class Border : MonoBehaviour
     public Collider2D topBorder;
     public Collider2D bottomBorder;
 
+    public Rigidbody2D topRigidBody;
+    public Rigidbody2D bottomRigidBody;
+
      void Awake()
     {
         Instance = this;
