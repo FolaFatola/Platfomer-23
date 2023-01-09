@@ -6,7 +6,7 @@ public class SpawnPoint : MonoBehaviour
 {
     public BoxCollider2D spawnPointCollider;
     public Rigidbody2D platformRigidBody;
-    public Vector2 spawnPointPosition;
+    public Vector3 spawnPointPosition;
 
     private void Awake()
     {

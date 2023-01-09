@@ -25,39 +25,40 @@ public class PlatformSpawner : SpawnPoint
     // Update is called once per frame
     public override void Update()
     {
-
-        print(spawnPointPosition.y);
+        
         base.Update();
-        if (Input.GetKeyDown(KeyCode.S))
+
+        if (allPlatforms.Count == 0)
         {
-            if (allPlatforms.Count == 0)
+             if (Input.GetKeyDown(KeyCode.S))
+                SpawnPlatform(platform, new Vector3(0, spawnPointPosition.y, spawnPointPosition.z));
+        }
+        else
+        {
+            //Check if position is taken when attempting to spawn.
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                SpawnPlatform(platform, new Vector2(0, spawnPointPosition.y));
-            }
-            else
-            {
-                foreach(Platform platform in allPlatforms)
+                foreach (Platform platform in allPlatforms)
                 {
-                    if(platform.transform.position.y == spawnPointPosition.y)
+
+                    if (platform.transform.position.y == spawnPointPosition.y)
                     {
                         print("Cannot place here");
                         positionTaken = true;
                     }
-                    else
-                    {
-                        positionTaken = false;
-                    }
                 }
 
-                if (!positionTaken)
-                    SpawnPlatform(platform, new Vector2(0, spawnPointPosition.y));  
+                //If position is free, spawn it.
+                if(!positionTaken)
+                    SpawnPlatform(platform, new Vector3(0, spawnPointPosition.y, spawnPointPosition.z));
             }
-        }
+
+            positionTaken = false;
+         }
     }
 
-    void SpawnPlatform(GameObject prefab, Vector2 objPos)
+    void SpawnPlatform(GameObject prefab, Vector3 objPos)
     {
-
         GameObject platformObj = Instantiate(prefab);
         Platform myPlatform = platformObj.GetComponent<Platform>(); 
         myPlatform.transform.position = objPos;
